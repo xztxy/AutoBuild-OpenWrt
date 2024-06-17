@@ -9,6 +9,11 @@ name: Build_x86_64
 
 # Add a button to trigger the workflow
 on: 
+#  schedule:
+#    - cron: '25 */3 * * *'
+#  workflow_dispatch:
+#  watch:
+#   types: started
   repository_dispatch:
   workflow_dispatch:
 
@@ -47,6 +52,7 @@ jobs:
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
         echo "src-git ssrp https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
+        echo "src-git lucky https://github.com/gdy666/luci-app-lucky.git" >> ./feeds.conf.default
         
     - name: Update & Install feeds
       working-directory: ./openwrt
