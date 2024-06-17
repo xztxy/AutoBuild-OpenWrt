@@ -14,9 +14,14 @@ on:
 #  workflow_dispatch:
 #  watch:
 #   types: started
+
   repository_dispatch:
   workflow_dispatch:
-
+    inputs:
+      root_sol:
+        description: "Workflow Title"
+        required: true
+        default: "Delete old workflow runs"
 jobs:
   build:
     runs-on: ubuntu-latest
